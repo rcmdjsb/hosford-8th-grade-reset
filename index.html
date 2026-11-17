@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hosford 8th Grade → High School Readiness</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#061a22] text-slate-100 min-h-screen flex flex-col justify-between font-sans">
+
+  <!-- Header -->
+  <header class="border-b border-[#1f7a99]/40 bg-[#092631]/95 backdrop-blur sticky top-0 z-20 shadow-lg">
+    <div class="max-w-4xl mx-auto px-4 py-3.5 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3.5">
+        <img src="logo.jpeg" alt="Hosford Husky Logo" class="w-12 h-12 rounded-xl object-cover border-2 border-[#7cc9e8] shadow-md bg-[#1a7a9a]" />
+        <div>
+          <span class="text-[11px] font-bold uppercase tracking-widest text-[#7cc9e8]">Hosford Middle School • Portland, OR</span>
+          <h1 class="text-lg sm:text-xl font-extrabold tracking-tight text-white leading-tight">8th Grade → High School Readiness</h1>
+        </div>
+      </div>
+      <div id="stepIndicator" class="shrink-0 text-xs font-bold px-3 py-1.5 rounded-full bg-[#1f7a99]/30 text-[#7cc9e8] border border-[#7cc9e8]/40">
+        Step 1 of 3
+      </div>
+    </div>
+    <!-- Progress Bar -->
+    <div class="w-full bg-[#092631] h-1.5">
+      <div id="progressBar" class="bg-[#7cc9e8] h-1.5 transition-all duration-300" style="width: 33%"></div>
+    </div>
+  </header>
+
+  <!-- Live PPS Countdown Banner -->
+  <section class="bg-[#092631] border-b border-[#1f7a99]/40">
+    <div class="max-w-4xl mx-auto px-4 py-5">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-[#7cc9e8]">Live School-Day Countdown</span>
+          <h2 class="text-base sm:text-lg font-extrabold text-white">Days Until You Are Officially a 9th Grader</h2>
+        </div>
+        <span id="todayDateLabel" class="text-xs text-slate-300 font-medium bg-[#061a22] px-3 py-1 rounded-lg border border-[#1f7a99]/40"></span>
+      </div>
+
+      <!-- 4 Quarters + Total Box (Matches Page 1 Chart) -->
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 text-center">
+        <div class="bg-[#061a22] border border-[#1f7a99]/50 rounded-xl p-3">
+          <div class="text-[11px] font-bold uppercase text-slate-400">Quarter 1</div>
+          <div id="q1Days" class="text-2xl font-black text-white mt-0.5">--</div>
+          <div class="text-[10px] text-slate-500">days left</div>
+        </div>
+        <div class="bg-[#061a22] border border-[#1f7a99]/50 rounded-xl p-3">
+          <div class="text-[11px] font-bold uppercase text-slate-400">Quarter 2</div>
+          <div id="q2Days" class="text-2xl font-black text-white mt-0.5">--</div>
+          <div class="text-[10px] text-slate-500">days left</div>
+        </div>
+        <div class="bg-[#061a22] border border-[#1f7a99]/50 rounded-xl p-3">
+          <div class="text-[11px] font-bold uppercase text-slate-400">Quarter 3</div>
+          <div id="q3Days" class="text-2xl font-black text-white mt-0.5">--</div>
+          <div class="text-[10px] text-slate-500">days left</div>
+        </div>
+        <div class="bg-[#061a22] border border-[#1f7a99]/50 rounded-xl p-3">
+          <div class="text-[11px] font-bold uppercase text-slate-400">Quarter 4</div>
+          <div id="q4Days" class="text-2xl font-black text-white mt-0.5">--</div>
+          <div class="text-[10px] text-slate-500">days left</div>
+        </div>
+        <div class="col-span-2 sm:col-span-1 bg-[#1f7a99]/30 border-2 border-[#7cc9e8] rounded-xl p-3 shadow-md">
+          <div class="text-[11px] font-extrabold uppercase text-[#7cc9e8]">Total Left</div>
+          <div id="totalDaysLeft" class="text-3xl font-black text-white mt-0.5">--</div>
+          <div class="text-[10px] text-[#7cc9e8] font-semibold">school days</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl w-full mx-auto px-4 py-8 flex-grow">
+
+    <!-- ================= STAGE 1: READINESS CHECKLIST ================= -->
+    <section id="stage1" class="space-y-6">
+      <div class="bg-[#092631] border border-[#1f7a99]/50 rounded-2xl p-6 shadow-xl space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#1f7a99]/30 pb-4">
+          <div>
+            <h2 class="text-xl font-extrabold text-white">Part 1: High School Readiness Checklist</h2>
+            <p class="text-sm text-slate-300 mt-1">Check off the habits you <strong>already do consistently</strong> right now.</p>
+          </div>
+          <div class="bg-[#061a22] border border-[#7cc9e8]/50 rounded-xl px-4 py-2 text-center shrink-0">
+            <div class="text-[10px] font-bold uppercase text-[#7cc9e8]">Readiness Score</div>
+            <div id="habitScoreBadge" class="text-xl font-black text-white">0 / 9</div>
+          </div>
+        </div>
+
+        <!-- Student Info -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="sm:col-span-2">
+            <label class="block text-xs font-semibold uppercase tracking-wider text-[#7cc9e8] mb-1.5">Your Name (First + Last Initial)</label>
+            <input id="studentName" type="text" placeholder="e.g., Jordan K." class="w-full rounded-xl bg-[#061a22] border border-[#1f7a99]/60 px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#7cc9e8]" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-[#7cc9e8] mb-1.5">Period</label>
+            <select id="periodSelect" class="w-full rounded-xl bg-[#061a22] border border-[#1f7a99]/60 px-4 py-3 text-white focus:outline-none focus:border-[#7cc9e8]">
+              <option value="Period 1">Period 1</option>
+              <option value="Period 4">Period 4</option>
+              <option value="Period 5">Period 5</option>
+              <option value="Period 6">Period 6</option>
+              <option value="Period 7">Period 7</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 3 Habit Categories -->
+        <div id="checklistContainer" class="space-y-5"></div>
+
+        <!-- Reflection -->
+        <div>
+          <label class="block text-sm font-bold text-white mb-1.5">Reflection: What is your plan to develop any remaining skills before high school starts?</label>
+          <textarea id="skillPlan" rows="3" placeholder="Look at the boxes you left unchecked above. Which 1–2 skills do you need to lock in first, and how will you practice them?" class="w-full rounded-xl bg-[#061a22] border border-[#1f7a99]/60 p-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-[#7cc9e8]"></textarea>
+        </div>
+
+        <button onclick="submitStage1()" class="w-full py-3.5 rounded-xl bg-[#1f7a99] hover:bg-[#2793b8] font-bold text-white shadow-lg border border-[#7cc9e8]/30 transition">
+          Next: Audit Your High School Grade Pathway →
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= STAGE 2: HIGH SCHOOL GRADE PATHWAYS ================= -->
+    <section id="stage2" class="hidden space-y-6">
+      <div class="bg-[#092631] border border-[#1f7a99]/50 rounded-2xl p-6 shadow-xl space-y-6">
+        <div>
+          <h2 class="text-xl font-extrabold text-white">Part 2: High School Grade Pathways Audit</h2>
+          <p class="text-sm text-slate-300 mt-1">Be honest: based on your <strong>current daily habits and grades</strong>, tap the pathway you are on right now.</p>
+        </div>
+
+        <!-- 3 Pathway Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Danger Zone -->
+          <button type="button" id="path-danger" onclick="selectPathway('danger')" class="text-left p-5 rounded-2xl border-2 border-rose-500/40 bg-[#061a22] hover:border-rose-500 transition flex flex-col justify-between space-y-4">
+            <div class="space-y-2.5">
+              <span class="inline-block text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded bg-rose-500/20 text-rose-400 border border-rose-500/40">Not Recommended</span>
+              <h3 class="text-lg font-black text-rose-400">THE DANGER ZONE</h3>
+              <p class="text-xs font-semibold text-slate-200">You are not ready for high school.</p>
+              <ul class="text-xs text-slate-300 space-y-1.5 list-disc pl-4">
+                <li>You don’t pass some classes.</li>
+                <li>You will need to make up credits or you will <strong>NOT graduate</strong>.</li>
+                <li>You will <strong>not be eligible for sports</strong>.</li>
+              </ul>
+            </div>
+            <div class="text-xs font-bold text-rose-400 pt-2 border-t border-slate-800">Tap if this is your current path →</div>
+          </button>
+
+          <!-- Borderline Pathway -->
+          <button type="button" id="path-borderline" onclick="selectPathway('borderline')" class="text-left p-5 rounded-2xl border-2 border-amber-500/40 bg-[#061a22] hover:border-amber-400 transition flex flex-col justify-between space-y-4">
+            <div class="space-y-2.5">
+              <span class="inline-block text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40">Caution Zone</span>
+              <h3 class="text-lg font-black text-amber-300">THE BORDERLINE PATHWAY</h3>
+              <p class="text-xs font-semibold text-slate-200">You are somewhat ready for high school.</p>
+              <ul class="text-xs text-slate-300 space-y-1.5 list-disc pl-4">
+                <li>You get mostly Cs.</li>
+                <li>You may be eligible for sports, but it will be close if grades drop.</li>
+                <li>Fewer 4-year direct options and limited merit scholarships.</li>
+              </ul>
+            </div>
+            <div class="text-xs font-bold text-amber-300 pt-2 border-t border-slate-800">Tap if this is your current path →</div>
+          </button>
+
+          <!-- Opportunity Pathway -->
+          <button type="button" id="path-opportunity" onclick="selectPathway('opportunity')" class="text-left p-5 rounded-2xl border-2 border-emerald-500/40 bg-[#061a22] hover:border-emerald-400 transition flex flex-col justify-between space-y-4">
+            <div class="space-y-2.5">
+              <span class="inline-block text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">Recommended Option</span>
+              <h3 class="text-lg font-black text-emerald-400">THE OPPORTUNITY PATHWAY</h3>
+              <p class="text-xs font-semibold text-slate-200">You are completely ready for high school.</p>
+              <ul class="text-xs text-slate-300 space-y-1.5 list-disc pl-4">
+                <li>You earn As and Bs.</li>
+                <li>You are in position to apply to and go to college.</li>
+                <li>You have many different options for your future.</li>
+              </ul>
+            </div>
+            <div class="text-xs font-bold text-emerald-400 pt-2 border-t border-slate-800">Tap if this is your current path →</div>
+          </button>
+        </div>
+
+        <!-- DYNAMIC INTERVENTION / REMINDER + VIDEO PANEL (Triggers when non-Opportunity chosen) -->
+        <div id="pathwayFeedbackBox" class="hidden rounded-2xl p-5 border space-y-4">
+          <div class="flex items-start gap-3">
+            <div id="feedbackIcon" class="text-2xl">⚠️</div>
+            <div>
+              <h3 id="feedbackTitle" class="font-extrabold text-base text-white"></h3>
+              <p id="feedbackBody" class="text-sm text-slate-200 mt-1 leading-relaxed"></p>
+            </div>
+          </div>
+
+          <!-- Key Reminders List -->
+          <div id="feedbackReminders" class="bg-[#061a22]/90 rounded-xl p-4 border border-slate-700/70 space-y-1.5 text-xs sm:text-sm text-slate-200"></div>
+
+          <!-- Embedded Reality-Check Video (Shown for Danger & Borderline) -->
+          <div id="feedbackVideoWrapper" class="space-y-2">
+            <div class="text-xs font-bold uppercase tracking-wider text-[#7cc9e8]">Watch This Quick Reset Reminder Before Moving On:</div>
+            <div class="relative w-full overflow-hidden rounded-xl border border-slate-700 bg-black" style="padding-top: 56.25%;">
+              <iframe id="pathwayVideoPlayer" class="absolute inset-0 w-full h-full" src="" title="High School Readiness Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Pathway Reflection Questions -->
+        <div class="space-y-4 pt-2 border-t border-[#1f7a99]/30">
+          <div>
+            <label class="block text-sm font-bold text-white mb-1">1. Which pathway gives you the most options after high school?</label>
+            <input id="pathwayQ1" type="text" placeholder="Your answer..." class="w-full rounded-xl bg-[#061a22] border border-[#1f7a99]/60 px-4 py-2.5 text-white focus:outline-none focus:border-[#7cc9e8]" />
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-white mb-1">2. What obstacles stand between you and the Opportunity Pathway right now?</label>
+            <textarea id="pathwayQ2" rows="2" placeholder="Be honest—phone distractions, missing assignments, not asking for help, arriving late..." class="w-full rounded-xl bg-[#061a22] border border-[#1f7a99]/60 p-3 text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-white mb-1">3. Why is it important NOT to wait until the 4th quarter to lock in your high school habits?</label>
+            <textarea id="pathwayQ3" rows="2" placeholder="Your answer..." class="w-full rounded-xl bg-[#061a22] border border-[#1f7a99]/60 p-3 text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
+          </div>
+        </div>
+
+        <div class="flex gap-3 pt-2">
+          <button onclick="goToStage(1)" class="px-5 py-3 rounded-xl bg-[#061a22] hover:bg-slate-900 border border-[#1f7a99]/50 text-slate-300 font-semibold">← Back</button>
+          <button onclick="submitStage2()" class="flex-grow py-3.5 rounded-xl bg-[#1f7a99] hover:bg-[#2793b8] font-bold text-white shadow-lg border border-[#7cc9e8]/30 transition">
+            Next: Build Your Quarter-by-Quarter Plan →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STAGE 3: QUARTER-BY-QUARTER PLANNER ================= -->
+    <section id="stage3" class="hidden space-y-6">
+      <div class="bg-[#092631] border border-[#1f7a99]/50 rounded-2xl p-6 shadow-xl space-y-6">
+        <div>
+          <h2 class="text-xl font-extrabold text-white">Part 3: High School Readiness Quarter Planner</h2>
+          <p class="text-sm text-slate-300 mt-1">Map out when you will lock in each habit before 9th grade starts.</p>
+        </div>
+
+        <!-- Reminder Pill of Missing Habits from Part 1 -->
+        <div id="missingHabitsBanner" class="bg-[#061a22] border border-[#7cc9e8]/40 rounded-xl p-4 text-xs sm:text-sm text-slate-200"></div>
+
+        <!-- 4 Quarter Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Quarter 1 Audit -->
+          <div class="bg-[#061a22] border border-[#1f7a99]/50 rounded-2xl p-4 space-y-3">
+            <div class="text-xs font-black uppercase tracking-wider text-[#7cc9e8]">Quarter 1 Audit</div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">What worked for me:</label>
+              <textarea id="q1Worked" rows="2" class="w-full rounded-lg bg-[#092631] border border-[#1f7a99]/50 p-2.5 text-sm text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">What didn't work for me:</label>
+              <textarea id="q1DidntWork" rows="2" class="w-full rounded-lg bg-[#092631] border border-[#1f7a99]/50 p-2.5 text-sm text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
+            </div>
+          </div>
+
+          <!-- Quarter 2 -->
+          <div class="bg-[#061a22] border border-[#1f7a99]/50 rounded-2xl p-4 space-y-3">
+            <div class="text-xs font-black uppercase tracking-wider text-[#7cc9e8]">Quarter 2 Plan</div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Habits to lock in:</label>
+              <textarea id="q2Habits" rows="2" class="w-full rounded-lg bg-[#092631] border border-[#1f7a99]/50 p-2.5 text-sm text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">How I'm starting:</label>
+              <textarea id="q2Start" rows="2" class="w-full rounded-lg bg-[#092631] border border-[#1f7a99]/50 p-2.5 text-sm text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
+            </div>
+          </div>
+
+          <!-- Quarter 3 -->
+          <div class="bg-[#061a22] border border-[#1f7a99]/50 rounded-2xl p-4 space-y-3">
+            <div class="text-xs font-black uppercase tracking-wider text-[#7cc9e8]">Quarter 3 Plan</div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Habits to lock in:</label>
+              <textarea id="q3Habits" rows="2" class="w-full rounded-lg bg-[#092631] border border-[#1f7a99]/50 p-2.5 text-sm text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">How I'm starting:</label>
+              <textarea id="q3Start" rows="2" class="w-full rounded-lg bg-[#092631] border border-[#1f7a99]/50 p-2.5 text-sm text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
+            </div>
+          </div>
+
+          <!-- Quarter 4 -->
+          <div class="bg-[#061a22] border border-[#1f7a99]/50 rounded-2xl p-4 space-y-3">
+            <div class="text-xs font-black uppercase tracking-wider text-[#7cc9e8]">Quarter 4 Plan (Final Stretch)</div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Habits to lock in:</label>
+              <textarea id="q4Habits" rows="2" class="w-full rounded-lg bg-[#092631] border border-[#1f7a99]/50 p-2.5 text-sm text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">How I'm starting:</label>
+              <textarea id="q4Start" rows="2" class="w-full rounded-lg bg-[#092631] border border-[#1f7a99]/50 p-2.5 text-sm text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Final Commitment Reflection -->
+        <div>
+          <label class="block text-sm font-bold text-white mb-1">Final Check-In: What is ONE habit you are locking in starting tomorrow at Hosford?</label>
+          <input id="finalReflection" type="text" placeholder="Starting tomorrow, I will..." class="w-full rounded-xl bg-[#061a22] border border-[#1f7a99]/60 px-4 py-3 text-white focus:outline-none focus:border-[#7cc9e8]" />
+        </div>
+
+        <div class="flex gap-3 pt-2">
+          <button onclick="goToStage(2)" class="px-5 py-3 rounded-xl bg-[#061a22] hover:bg-slate-900 border border-[#1f7a99]/50 text-slate-300 font-semibold">← Back</button>
+          <button id="finalSubmitBtn" onclick="submitAllToSheet()" class="flex-grow py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-bold text-white shadow-lg transition">
+            Submit My 8th Grade Readiness Plan ✓
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STAGE 4: COMPLETION SUMMARY ================= -->
+    <section id="stageDone" class="hidden">
+      <div class="bg-[#092631] border border-[#7cc9e8]/50 rounded-2xl p-8 shadow-xl text-center space-y-5">
+        <img src="logo.jpeg" alt="Hosford Husky" class="w-16 h-16 rounded-2xl mx-auto border-2 border-[#7cc9e8] shadow-md" />
+        <h2 class="text-2xl font-extrabold text-white">High School Readiness Plan Locked In!</h2>
+        <p id="summaryMessage" class="text-slate-200 text-base max-w-lg mx-auto"></p>
+        <div class="bg-[#061a22] border border-[#1f7a99]/50 rounded-xl p-4 text-left max-w-md mx-auto space-y-2 text-sm">
+          <div><span class="text-slate-400">School Days Left:</span> <span id="sumDays" class="font-bold text-[#7cc9e8]"></span></div>
+          <div><span class="text-slate-400">Readiness Habits:</span> <span id="sumHabits" class="font-bold text-white"></span></div>
+          <div><span class="text-slate-400">Current Pathway:</span> <span id="sumPathway" class="font-bold text-white"></span></div>
+          <div><span class="text-slate-400">Tomorrow's Commitment:</span> <span id="sumCommit" class="text-slate-200"></span></div>
+        </div>
+        <p class="text-xs text-slate-400">Your responses have been sent to Mr. Bach. Make every remaining day count, Husky!</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="text-center text-xs text-slate-400 py-4 border-t border-[#1f7a99]/30 bg-[#092631]/60">
+    Hosford Middle School • Chris Bach | FSTT Education • FailedStudent.com
+  </footer>
+
+  <script>
+    // =========================================================================
+    // 1. TEACHER CONFIGURATION (APPS SCRIPT URL, PPS DATES & INTERVENTION VIDEOS)
+    // =========================================================================
+    const SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxEl8L-sOdfGbt6h06YH7RJV5oWpDVJU_4FLctFYpfFOdBDD8WakqG1SNbUPLxM-3vz/exec';
+
+    // YouTube Videos for Students Who Select Non-Opportunity Pathways
+    const DANGER_VIDEO_ID = 'Tuw8hxrFBH8';     // Replace with preferred YouTube video ID
+    const BORDERLINE_VIDEO_ID = 'mgmVOuLgFB0'; // Replace with preferred YouTube video ID
+
+    // Portland Public Schools (Hosford) 2026-2027 Quarter End Dates & Non-School Days
+    const PPS_CALENDAR = {
+      q1Start: '2026-08-26',
+      q1End:   '2026-10-30',
+      q2Start: '2026-11-03',
+      q2End:   '2027-01-22',
+      q3Start: '2027-01-26',
+      q3End:   '2027-04-02',
+      q4Start: '2027-04-05',
+      lastDayOfSchool: '2027-06-11', // Last day of school for Hosford 8th graders
+      holidays: [
+        '2026-09-07', // Labor Day
+        '2026-10-09', // Statewide Inservice
+        '2026-11-02', // Grading Day
+        '2026-11-11', // Veterans Day
+        '2026-11-23', '2026-11-24', '2026-11-25', '2026-11-26', '2026-11-27', // Thanksgiving Break
+        '2026-12-21', '2026-12-22', '2026-12-23', '2026-12-24', '2026-12-25', // Winter Break Wk 1
+        '2026-12-28', '2026-12-29', '2026-12-30', '2026-12-31', '2027-01-01', // Winter Break Wk 2
+        '2027-01-18', // MLK Jr. Day
+        '2027-01-25', // Semester Grading Day
+        '2027-02-15', // Presidents Day
+        '2027-03-22', '2027-03-23', '2027-03-24', '2027-03-25', '2027-03-26', // Spring Break
+        '2027-04-05', // Quarter Grading Day
+        '2027-05-31'  // Memorial Day
+      ]
+    };
+
+    const HABIT_CATEGORIES = [
+      {
+        category: 'Time & Responsibility',
+        items: [
+          { id: 'punctuality', label: 'Punctuality', desc: 'Arriving to class on time and seated before the bell.' },
+          { id: 'organization', label: 'Organization', desc: 'Tracking your own assignments, tests, and project deadlines.' },
+          { id: 'self_mgmt', label: 'Self-Management', desc: 'Starting homework without needing multiple reminders.' }
+        ]
+      },
+      {
+        category: 'Mindset & Focus',
+        items: [
+          { id: 'focus', label: 'Sustained Focus', desc: 'Getting right to work and staying focused through class.' },
+          { id: 'curiosity', label: 'Curiosity', desc: 'Asking thoughtful questions and diving deeper into topics.' },
+          { id: 'distraction', label: 'Distraction Control', desc: 'Stashing phones and devices out of sight during instruction.' }
+        ]
+      },
+      {
+        category: 'Communication & Growth',
+        items: [
+          { id: 'advocacy', label: 'Self-Advocacy', desc: 'Emailing or talking to teachers when you need help or miss class.' },
+          { id: 'collaboration', label: 'Collaboration', desc: 'Working respectfully and productively in team projects.' },
+          { id: 'resilience', label: 'Resilience', desc: 'Learning from mistakes and trying new study strategies when challenged.' }
+        ]
+      }
+    ];
+
+    // =========================================================================
+    // 2. LIVE PPS SCHOOL-DAY COUNTDOWN ENGINE
+    // =========================================================================
+    function countSchoolDaysBetween(startDate, endDate, holidaySet) {
+      let count = 0;
+      const cur = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+      const end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
+      while (cur <= end) {
+        const day = cur.getDay();
+        const iso = cur.toISOString().split('T')[0];
+        if (day !== 0 && day !== 6 && !holidaySet.has(iso)) {
+          count++;
+        }
+        cur.setDate(cur.getDate() + 1);
+      }
+      return count;
+    }
+
+    let totalSchoolDaysRemaining = 0;
+
+    function updateCountdown() {
+      const now = new Date();
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const holidaySet = new Set(PPS_CALENDAR.holidays);
+
+      document.getElementById('todayDateLabel').textContent = now.toLocaleDateString('en-US', {
+        weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'
+      });
+
+      const quarters = [
+        { el: 'q1Days', start: new Date(PPS_CALENDAR.q1Start + 'T00:00:00'), end: new Date(PPS_CALENDAR.q1End + 'T00:00:00') },
+        { el: 'q2Days', start: new Date(PPS_CALENDAR.q2Start + 'T00:00:00'), end: new Date(PPS_CALENDAR.q2End + 'T00:00:00') },
+        { el: 'q3Days', start: new Date(PPS_CALENDAR.q3Start + 'T00:00:00'), end: new Date(PPS_CALENDAR.q3End + 'T00:00:00') },
+        { el: 'q4Days', start: new Date(PPS_CALENDAR.q4Start + 'T00:00:00'), end: new Date(PPS_CALENDAR.lastDayOfSchool + 'T00:00:00') }
+      ];
+
+      let total = 0;
+      quarters.forEach(q => {
+        if (today > q.end) {
+          document.getElementById(q.el).textContent = '0';
+        } else {
+          const effectiveStart = today > q.start ? today : q.start;
+          const days = countSchoolDaysBetween(effectiveStart, q.end, holidaySet);
+          document.getElementById(q.el).textContent = days;
+          total += days;
+        }
+      });
+
+      totalSchoolDaysRemaining = total;
+      document.getElementById('totalDaysLeft').textContent = total;
+    }
+
+    // =========================================================================
+    // 3. APP STATE & CHECKLIST BUILDER
+    // =========================================================================
+    let state = {
+      checkedIds: new Set(),
+      selectedPathway: null
+    };
+
+    function buildChecklist() {
+      const container = document.getElementById('checklistContainer');
+      HABIT_CATEGORIES.forEach(cat => {
+        const block = document.createElement('div');
+        block.className = 'space-y-2.5';
+        block.innerHTML = `<h3 class="text-xs font-extrabold uppercase tracking-wider text-[#7cc9e8]">${cat.category}</h3>`;
+
+        const grid = document.createElement('div');
+        grid.className = 'grid grid-cols-1 gap-2.5';
+
+        cat.items.forEach(item => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.id = `habit-btn-${item.id}`;
+          btn.className = 'w-full text-left p-3.5 rounded-xl border border-[#1f7a99]/50 bg-[#061a22] hover:border-[#7cc9e8] transition flex items-start gap-3.5';
+          btn.innerHTML = `
+            <div class="habit-box mt-0.5 w-6 h-6 rounded-lg border-2 border-slate-500 flex items-center justify-center shrink-0 font-bold text-sm text-transparent transition">✓</div>
+            <div>
+              <div class="font-bold text-white text-sm">${item.label}</div>
+              <div class="text-xs text-slate-300 mt-0.5">${item.desc}</div>
+            </div>
+          `;
+          btn.onclick = () => toggleHabit(item.id);
+          grid.appendChild(btn);
+        });
+
+        block.appendChild(grid);
+        container.appendChild(block);
+      });
+    }
+
+    function toggleHabit(id) {
+      const btn = document.getElementById(`habit-btn-${id}`);
+      const box = btn.querySelector('.habit-box');
+      if (state.checkedIds.has(id)) {
+        state.checkedIds.delete(id);
+        btn.className = 'w-full text-left p-3.5 rounded-xl border border-[#1f7a99]/50 bg-[#061a22] hover:border-[#7cc9e8] transition flex items-start gap-3.5';
+        box.className = 'habit-box mt-0.5 w-6 h-6 rounded-lg border-2 border-slate-500 flex items-center justify-center shrink-0 font-bold text-sm text-transparent transition';
+      } else {
+        state.checkedIds.add(id);
+        btn.className = 'w-full text-left p-3.5 rounded-xl border-2 border-[#7cc9e8] bg-[#1f7a99]/25 transition flex items-start gap-3.5 shadow';
+        box.className = 'habit-box mt-0.5 w-6 h-6 rounded-lg border-2 border-[#7cc9e8] bg-[#7cc9e8] flex items-center justify-center shrink-0 font-black text-sm text-[#061a22] transition';
+      }
+      document.getElementById('habitScoreBadge').textContent = `${state.checkedIds.size} / 9`;
+    }
+
+    // =========================================================================
+    // 4. PATHWAY SELECTION + NON-OPPORTUNITY INTERVENTION VIDEOS/REMINDERS
+    // =========================================================================
+    function selectPathway(key) {
+      state.selectedPathway = key;
+
+      // Reset card borders
+      document.getElementById('path-danger').className = 'text-left p-5 rounded-2xl border-2 border-rose-500/40 bg-[#061a22] hover:border-rose-500 transition flex flex-col justify-between space-y-4';
+      document.getElementById('path-borderline').className = 'text-left p-5 rounded-2xl border-2 border-amber-500/40 bg-[#061a22] hover:border-amber-400 transition flex flex-col justify-between space-y-4';
+      document.getElementById('path-opportunity').className = 'text-left p-5 rounded-2xl border-2 border-emerald-500/40 bg-[#061a22] hover:border-emerald-400 transition flex flex-col justify-between space-y-4';
+
+      const box = document.getElementById('pathwayFeedbackBox');
+      const reminders = document.getElementById('feedbackReminders');
+      const vidWrap = document.getElementById('feedbackVideoWrapper');
+      const player = document.getElementById('pathwayVideoPlayer');
+
+      box.classList.remove('hidden');
+
+      if (key === 'danger') {
+        document.getElementById('path-danger').className = 'text-left p-5 rounded-2xl border-2 border-rose-500 bg-rose-950/30 shadow-xl transition flex flex-col justify-between space-y-4';
+        box.className = 'rounded-2xl p-5 border-2 border-rose-500/70 bg-rose-950/25 space-y-4';
+        document.getElementById('feedbackIcon').textContent = '🚨';
+        document.getElementById('feedbackTitle').textContent = 'Reality Check: Why You Must Reset Before 9th Grade';
+        document.getElementById('feedbackBody').textContent = 'In middle school, you move on to 9th grade even if you fail classes. In high school, every single class counts for credits—there is NO automatic promotion.';
+        reminders.innerHTML = `
+          <div class="font-bold text-rose-300">3 Things That Happen Day 1 of High School:</div>
+          <ul class="list-disc pl-5 space-y-1">
+            <li><strong>Failed classes = Zero credits:</strong> You have to retake them in summer school or night school while friends move ahead.</li>
+            <li><strong>Sports & Activities Cutoff:</strong> In Portland Public Schools (OSAA rules), failing classes immediately makes you ineligible to play sports.</li>
+            <li><strong>Good news:</strong> You still have <strong>${totalSchoolDaysRemaining} school days</strong> at Hosford to practice the habits that flip this around.</li>
+          </ul>
+        `;
+        vidWrap.classList.remove('hidden');
+        player.src = `https://www.youtube.com/embed/${DANGER_VIDEO_ID}?rel=0`;
+
+      } else if (key === 'borderline') {
+        document.getElementById('path-borderline').className = 'text-left p-5 rounded-2xl border-2 border-amber-400 bg-amber-950/30 shadow-xl transition flex flex-col justify-between space-y-4';
+        box.className = 'rounded-2xl p-5 border-2 border-amber-400/70 bg-amber-950/20 space-y-4';
+        document.getElementById('feedbackIcon').textContent = '⚡';
+        document.getElementById('feedbackTitle').textContent = 'Warning: "Just Getting By" Shrinks Your Options';
+        document.getElementById('feedbackBody').textContent = 'Coasting with Cs in 8th grade usually turns into Ds and Fs when 9th-grade workload jumps. You have way more potential than a borderline transcript.';
+        reminders.innerHTML = `
+          <div class="font-bold text-amber-300">What Moving from Borderline → Opportunity Unlocks:</div>
+          <ul class="list-disc pl-5 space-y-1">
+            <li><strong>Zero Stress Eligibility:</strong> Never worrying whether one bad quiz knocks you off a team or club.</li>
+            <li><strong>Real Money & Doors Open:</strong> As and Bs unlock Oregon Promise, college merit scholarships, and competitive trade/tech programs.</li>
+            <li><strong>Small Shift Today:</strong> Turning in missing work and putting your phone away during class is often all it takes to jump a full letter grade.</li>
+          </ul>
+        `;
+        vidWrap.classList.remove('hidden');
+        player.src = `https://www.youtube.com/embed/${BORDERLINE_VIDEO_ID}?rel=0`;
+
+      } else {
+        document.getElementById('path-opportunity').className = 'text-left p-5 rounded-2xl border-2 border-emerald-400 bg-emerald-950/30 shadow-xl transition flex flex-col justify-between space-y-4';
+        box.className = 'rounded-2xl p-5 border-2 border-emerald-400/70 bg-emerald-950/20 space-y-3';
+        document.getElementById('feedbackIcon').textContent = '🎯';
+        document.getElementById('feedbackTitle').textContent = 'You Are on the Opportunity Pathway — Keep Protecting It';
+        document.getElementById('feedbackBody').textContent = 'Your current habits are setting you up to walk into 9th grade confident, eligible for everything, and in control of your future.';
+        reminders.innerHTML = `
+          <div class="font-bold text-emerald-300">How to Stay Locked In Through June:</div>
+          <p>Don't let senioritis (8th-grade edition) creep in during Quarter 3 or Quarter 4. Use the planner on the next step to level up any remaining habits from your checklist.</p>
+        `;
+        vidWrap.classList.add('hidden');
+        player.src = '';
+      }
+    }
+
+    // =========================================================================
+    // 5. NAVIGATION & VALIDATION
+    // =========================================================================
+    function goToStage(num) {
+      if (num !== 2) {
+        document.getElementById('pathwayVideoPlayer').src = '';
+      }
+      [1, 2, 3].forEach(n => {
+        document.getElementById(`stage${n}`).classList.toggle('hidden', n !== num);
+      });
+      document.getElementById('stepIndicator').textContent = `Step ${num} of 3`;
+      document.getElementById('progressBar').style.width = `${num * 33.3}%`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (num === 3) {
+        const allItems = HABIT_CATEGORIES.flatMap(c => c.items);
+        const missing = allItems.filter(i => !state.checkedIds.has(i.id)).map(i => i.label);
+        const banner = document.getElementById('missingHabitsBanner');
+        if (missing.length > 0) {
+          banner.innerHTML = `<strong class="text-[#7cc9e8]">Skills from Part 1 to Build in Your Quarter Plan:</strong> ${missing.join(', ')}`;
+        } else {
+          banner.innerHTML = `<strong class="text-emerald-400">All 9 Habits Checked!</strong> Use the quarters below to plan how you will maintain and strengthen these habits all the way to June.`;
+        }
+      }
+    }
+
+    function submitStage1() {
+      const name = document.getElementById('studentName').value.trim();
+      const plan = document.getElementById('skillPlan').value.trim();
+      if (!name) return alert('Please enter your Name (First + Last Initial).');
+      if (!plan) return alert('Please write your brief reflection plan before moving to Part 2.');
+      goToStage(2);
+    }
+
+    function submitStage2() {
+      if (!state.selectedPathway) return alert('Tap one of the 3 High School Pathways above to continue.');
+      const q1 = document.getElementById('pathwayQ1').value.trim();
+      const q2 = document.getElementById('pathwayQ2').value.trim();
+      const q3 = document.getElementById('pathwayQ3').value.trim();
+      if (!q1 || !q2 || !q3) return alert('Please answer all 3 Pathway Reflection questions.');
+      goToStage(3);
+    }
+
+    // =========================================================================
+    // 6. FINAL SUBMISSION TO GOOGLE SHEETS
+    // =========================================================================
+    async function submitAllToSheet() {
+      const finalCommit = document.getElementById('finalReflection').value.trim();
+      if (!finalCommit) return alert('Please enter your commitment for tomorrow at Hosford.');
+
+      const btn = document.getElementById('finalSubmitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Saving Your Plan...';
+
+      const allItems = HABIT_CATEGORIES.flatMap(c => c.items);
+      const checkedLabels = allItems.filter(i => state.checkedIds.has(i.id)).map(i => i.label).join(', ') || 'None yet';
+      const missingLabels = allItems.filter(i => !state.checkedIds.has(i.id)).map(i => i.label).join(', ') || 'None';
+
+      const pathwayNames = {
+        danger: 'The Danger Zone',
+        borderline: 'The Borderline Pathway',
+        opportunity: 'The Opportunity Pathway'
+      };
+
+      const q1AuditText = `Worked: ${document.getElementById('q1Worked').value.trim()} | Didn't work: ${document.getElementById('q1DidntWork').value.trim()}`;
+      const q2ToQ4Text = [
+        `Q2: ${document.getElementById('q2Habits').value.trim()} (${document.getElementById('q2Start').value.trim()})`,
+        `Q3: ${document.getElementById('q3Habits').value.trim()} (${document.getElementById('q3Start').value.trim()})`,
+        `Q4: ${document.getElementById('q4Habits').value.trim()} (${document.getElementById('q4Start').value.trim()})`
+      ].join(' || ');
+
+      const payload = {
+        period: document.getElementById('periodSelect').value,
+        studentName: document.getElementById('studentName').value.trim(),
+        daysLeft: totalSchoolDaysRemaining,
+        habitScore: `${state.checkedIds.size}/9`,
+        checkedHabits: checkedLabels,
+        missingHabits: missingLabels,
+        skillPlan: document.getElementById('skillPlan').value.trim(),
+        selectedPathway: pathwayNames[state.selectedPathway],
+        pathwayQ1: document.getElementById('pathwayQ1').value.trim(),
+        pathwayQ2: document.getElementById('pathwayQ2').value.trim(),
+        pathwayQ3: document.getElementById('pathwayQ3').value.trim(),
+        q1Audit: q1AuditText,
+        q2ToQ4Plan: q2ToQ4Text,
+        finalReflection: finalCommit
+      };
+
+      try {
+        await fetch(SHEET_WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.error('Submission error:', err);
+      }
+
+      // Show Completion Screen
+      document.getElementById('stage3').classList.add('hidden');
+      document.getElementById('stageDone').classList.remove('hidden');
+      document.getElementById('stepIndicator').textContent = 'Complete ✓';
+      document.getElementById('progressBar').style.width = '100%';
+
+      document.getElementById('summaryMessage').textContent =
+        `You have ${totalSchoolDaysRemaining} school days left at Hosford to lock in your habits and own your 9th-grade launch.`;
+      document.getElementById('sumDays').textContent = `${totalSchoolDaysRemaining} school days`;
+      document.getElementById('sumHabits').textContent = `${state.checkedIds.size} / 9 habits checked`;
+      document.getElementById('sumPathway').textContent = pathwayNames[state.selectedPathway];
+      document.getElementById('sumCommit').textContent = finalCommit;
+    }
+
+    // Initialize
+    updateCountdown();
+    buildChecklist();
+  </script>
+</body>
+</html>
