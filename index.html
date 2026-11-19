@@ -14,7 +14,7 @@
       <div class="flex items-center gap-3.5">
         <img src="logo.jpeg" alt="Hosford Husky Logo" class="w-12 h-12 rounded-xl object-cover border-2 border-[#7cc9e8] shadow-md bg-[#1a7a9a]" />
         <div>
-          <span class="text-[11px] font-bold uppercase tracking-widest text-[#7cc9e8]">Hosford Middle School • Portland, OR</span>
+          <span class="text-[11px] font-bold uppercase tracking-widest text-[#7cc9e8]">Hosford Middle School • 8th Grade Team</span>
           <h1 class="text-lg sm:text-xl font-extrabold tracking-tight text-white leading-tight">8th Grade → High School Readiness</h1>
         </div>
       </div>
@@ -33,13 +33,13 @@
     <div class="max-w-4xl mx-auto px-4 py-5">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
         <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-[#7cc9e8]">Live School-Day Countdown</span>
+          <span class="text-xs font-bold uppercase tracking-wider text-[#7cc9e8]">Live PPS School-Day Countdown (Last Day: June 8)</span>
           <h2 class="text-base sm:text-lg font-extrabold text-white">Days Until You Are Officially a 9th Grader</h2>
         </div>
         <span id="todayDateLabel" class="text-xs text-slate-300 font-medium bg-[#061a22] px-3 py-1 rounded-lg border border-[#1f7a99]/40"></span>
       </div>
 
-      <!-- 4 Quarters + Total Box (Matches Page 1 Chart) -->
+      <!-- 4 Quarters + Total Box -->
       <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 text-center">
         <div class="bg-[#061a22] border border-[#1f7a99]/50 rounded-xl p-3">
           <div class="text-[11px] font-bold uppercase text-slate-400">Quarter 1</div>
@@ -87,22 +87,10 @@
           </div>
         </div>
 
-        <!-- Student Info -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div class="sm:col-span-2">
-            <label class="block text-xs font-semibold uppercase tracking-wider text-[#7cc9e8] mb-1.5">Your Name (First + Last Initial)</label>
-            <input id="studentName" type="text" placeholder="e.g., Jordan K." class="w-full rounded-xl bg-[#061a22] border border-[#1f7a99]/60 px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#7cc9e8]" />
-          </div>
-          <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-[#7cc9e8] mb-1.5">Period</label>
-            <select id="periodSelect" class="w-full rounded-xl bg-[#061a22] border border-[#1f7a99]/60 px-4 py-3 text-white focus:outline-none focus:border-[#7cc9e8]">
-              <option value="Period 1">Period 1</option>
-              <option value="Period 4">Period 4</option>
-              <option value="Period 5">Period 5</option>
-              <option value="Period 6">Period 6</option>
-              <option value="Period 7">Period 7</option>
-            </select>
-          </div>
+        <!-- Student Name (Full Width — No Period Dropdown) -->
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-[#7cc9e8] mb-1.5">Your Name (First + Last Name)</label>
+          <input id="studentName" type="text" placeholder="e.g., Jordan Kim" class="w-full rounded-xl bg-[#061a22] border border-[#1f7a99]/60 px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#7cc9e8]" />
         </div>
 
         <!-- 3 Habit Categories -->
@@ -111,10 +99,10 @@
         <!-- Reflection -->
         <div>
           <label class="block text-sm font-bold text-white mb-1.5">Reflection: What is your plan to develop any remaining skills before high school starts?</label>
-          <textarea id="skillPlan" rows="3" placeholder="Look at the boxes you left unchecked above. Which 1–2 skills do you need to lock in first, and how will you practice them?" class="w-full rounded-xl bg-[#061a22] border border-[#1f7a99]/60 p-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-[#7cc9e8]"></textarea>
+          <textarea id="skillPlan" rows="3" placeholder="Look at the boxes you left unchecked above. Which 1-2 skills do you need to lock in first, and how will you practice them?" class="w-full rounded-xl bg-[#061a22] border border-[#1f7a99]/60 p-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-[#7cc9e8]"></textarea>
         </div>
 
-        <button onclick="submitStage1()" class="w-full py-3.5 rounded-xl bg-[#1f7a99] hover:bg-[#2793b8] font-bold text-white shadow-lg border border-[#7cc9e8]/30 transition">
+        <button type="button" onclick="submitStage1()" class="w-full py-3.5 rounded-xl bg-[#1f7a99] hover:bg-[#2793b8] font-bold text-white shadow-lg border border-[#7cc9e8]/30 transition">
           Next: Audit Your High School Grade Pathway →
         </button>
       </div>
@@ -137,7 +125,7 @@
               <h3 class="text-lg font-black text-rose-400">THE DANGER ZONE</h3>
               <p class="text-xs font-semibold text-slate-200">You are not ready for high school.</p>
               <ul class="text-xs text-slate-300 space-y-1.5 list-disc pl-4">
-                <li>You don’t pass some classes.</li>
+                <li>You do not pass some classes.</li>
                 <li>You will need to make up credits or you will <strong>NOT graduate</strong>.</li>
                 <li>You will <strong>not be eligible for sports</strong>.</li>
               </ul>
@@ -176,7 +164,7 @@
           </button>
         </div>
 
-        <!-- DYNAMIC INTERVENTION / REMINDER + VIDEO PANEL (Triggers when non-Opportunity chosen) -->
+        <!-- DYNAMIC INTERVENTION / REMINDER + VIDEO PANEL -->
         <div id="pathwayFeedbackBox" class="hidden rounded-2xl p-5 border space-y-4">
           <div class="flex items-start gap-3">
             <div id="feedbackIcon" class="text-2xl">⚠️</div>
@@ -191,7 +179,12 @@
 
           <!-- Embedded Reality-Check Video (Shown for Danger & Borderline) -->
           <div id="feedbackVideoWrapper" class="space-y-2">
-            <div class="text-xs font-bold uppercase tracking-wider text-[#7cc9e8]">Watch This Quick Reset Reminder Before Moving On:</div>
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span id="videoCaptionText" class="text-xs font-bold uppercase tracking-wider text-[#7cc9e8]">Watch This Reset Video Before Moving On:</span>
+              <a id="fallbackYoutubeLink" href="#" target="_blank" rel="noopener noreferrer" class="text-xs font-bold px-3 py-1 rounded-lg bg-[#1f7a99]/40 text-[#7cc9e8] border border-[#7cc9e8]/40 hover:bg-[#1f7a99] hover:text-white transition">
+                Watch on YouTube ↗
+              </a>
+            </div>
             <div class="relative w-full overflow-hidden rounded-xl border border-slate-700 bg-black" style="padding-top: 56.25%;">
               <iframe id="pathwayVideoPlayer" class="absolute inset-0 w-full h-full" src="" title="High School Readiness Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
@@ -206,7 +199,7 @@
           </div>
           <div>
             <label class="block text-sm font-bold text-white mb-1">2. What obstacles stand between you and the Opportunity Pathway right now?</label>
-            <textarea id="pathwayQ2" rows="2" placeholder="Be honest—phone distractions, missing assignments, not asking for help, arriving late..." class="w-full rounded-xl bg-[#061a22] border border-[#1f7a99]/60 p-3 text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
+            <textarea id="pathwayQ2" rows="2" placeholder="Be honest: phone distractions, missing assignments, not asking for help, arriving late..." class="w-full rounded-xl bg-[#061a22] border border-[#1f7a99]/60 p-3 text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
           </div>
           <div>
             <label class="block text-sm font-bold text-white mb-1">3. Why is it important NOT to wait until the 4th quarter to lock in your high school habits?</label>
@@ -215,8 +208,8 @@
         </div>
 
         <div class="flex gap-3 pt-2">
-          <button onclick="goToStage(1)" class="px-5 py-3 rounded-xl bg-[#061a22] hover:bg-slate-900 border border-[#1f7a99]/50 text-slate-300 font-semibold">← Back</button>
-          <button onclick="submitStage2()" class="flex-grow py-3.5 rounded-xl bg-[#1f7a99] hover:bg-[#2793b8] font-bold text-white shadow-lg border border-[#7cc9e8]/30 transition">
+          <button type="button" onclick="goToStage(1)" class="px-5 py-3 rounded-xl bg-[#061a22] hover:bg-slate-900 border border-[#1f7a99]/50 text-slate-300 font-semibold">← Back</button>
+          <button type="button" onclick="submitStage2()" class="flex-grow py-3.5 rounded-xl bg-[#1f7a99] hover:bg-[#2793b8] font-bold text-white shadow-lg border border-[#7cc9e8]/30 transition">
             Next: Build Your Quarter-by-Quarter Plan →
           </button>
         </div>
@@ -244,7 +237,7 @@
               <textarea id="q1Worked" rows="2" class="w-full rounded-lg bg-[#092631] border border-[#1f7a99]/50 p-2.5 text-sm text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
             </div>
             <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">What didn't work for me:</label>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">What did not work for me:</label>
               <textarea id="q1DidntWork" rows="2" class="w-full rounded-lg bg-[#092631] border border-[#1f7a99]/50 p-2.5 text-sm text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
             </div>
           </div>
@@ -257,7 +250,7 @@
               <textarea id="q2Habits" rows="2" class="w-full rounded-lg bg-[#092631] border border-[#1f7a99]/50 p-2.5 text-sm text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
             </div>
             <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">How I'm starting:</label>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">How I am starting:</label>
               <textarea id="q2Start" rows="2" class="w-full rounded-lg bg-[#092631] border border-[#1f7a99]/50 p-2.5 text-sm text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
             </div>
           </div>
@@ -270,7 +263,7 @@
               <textarea id="q3Habits" rows="2" class="w-full rounded-lg bg-[#092631] border border-[#1f7a99]/50 p-2.5 text-sm text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
             </div>
             <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">How I'm starting:</label>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">How I am starting:</label>
               <textarea id="q3Start" rows="2" class="w-full rounded-lg bg-[#092631] border border-[#1f7a99]/50 p-2.5 text-sm text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
             </div>
           </div>
@@ -283,7 +276,7 @@
               <textarea id="q4Habits" rows="2" class="w-full rounded-lg bg-[#092631] border border-[#1f7a99]/50 p-2.5 text-sm text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
             </div>
             <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">How I'm starting:</label>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">How I am starting:</label>
               <textarea id="q4Start" rows="2" class="w-full rounded-lg bg-[#092631] border border-[#1f7a99]/50 p-2.5 text-sm text-white focus:outline-none focus:border-[#7cc9e8]"></textarea>
             </div>
           </div>
@@ -296,8 +289,8 @@
         </div>
 
         <div class="flex gap-3 pt-2">
-          <button onclick="goToStage(2)" class="px-5 py-3 rounded-xl bg-[#061a22] hover:bg-slate-900 border border-[#1f7a99]/50 text-slate-300 font-semibold">← Back</button>
-          <button id="finalSubmitBtn" onclick="submitAllToSheet()" class="flex-grow py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-bold text-white shadow-lg transition">
+          <button type="button" onclick="goToStage(2)" class="px-5 py-3 rounded-xl bg-[#061a22] hover:bg-slate-900 border border-[#1f7a99]/50 text-slate-300 font-semibold">← Back</button>
+          <button id="finalSubmitBtn" type="button" onclick="submitAllToSheet()" class="flex-grow py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-bold text-white shadow-lg transition">
             Submit My 8th Grade Readiness Plan ✓
           </button>
         </div>
@@ -314,52 +307,52 @@
           <div><span class="text-slate-400">School Days Left:</span> <span id="sumDays" class="font-bold text-[#7cc9e8]"></span></div>
           <div><span class="text-slate-400">Readiness Habits:</span> <span id="sumHabits" class="font-bold text-white"></span></div>
           <div><span class="text-slate-400">Current Pathway:</span> <span id="sumPathway" class="font-bold text-white"></span></div>
-          <div><span class="text-slate-400">Tomorrow's Commitment:</span> <span id="sumCommit" class="text-slate-200"></span></div>
+          <div><span class="text-slate-400">Tomorrow Commitment:</span> <span id="sumCommit" class="text-slate-200"></span></div>
         </div>
-        <p class="text-xs text-slate-400">Your responses have been sent to Mr. Bach. Make every remaining day count, Husky!</p>
+        <p class="text-xs text-slate-400">Your responses have been recorded for the 8th Grade Team. Make every remaining day count, Husky!</p>
       </div>
     </section>
 
   </main>
 
   <footer class="text-center text-xs text-slate-400 py-4 border-t border-[#1f7a99]/30 bg-[#092631]/60">
-    Hosford Middle School • Chris Bach | FSTT Education • FailedStudent.com
+    Hosford Middle School 8th Grade Team • Chris Bach | FSTT Education • FailedStudent.com
   </footer>
 
   <script>
     // =========================================================================
-    // 1. TEACHER CONFIGURATION (APPS SCRIPT URL, PPS DATES & INTERVENTION VIDEOS)
+    // 1. TEACHER CONFIGURATION (APPS SCRIPT URL, PPS DATES & VIDEOS)
     // =========================================================================
-    const SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxEl8L-sOdfGbt6h06YH7RJV5oWpDVJU_4FLctFYpfFOdBDD8WakqG1SNbUPLxM-3vz/exec';
+    const SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwq7d4xbalg2_BiT8srMr6XC3f_XnpohI5AOXE6lTI7-gUPQ8hUoTM_9dSHNrR_JDvgWA/exec';
 
-    // YouTube Videos for Students Who Select Non-Opportunity Pathways
-    const DANGER_VIDEO_ID = 'Tuw8hxrFBH8';     // Replace with preferred YouTube video ID
-    const BORDERLINE_VIDEO_ID = 'mgmVOuLgFB0'; // Replace with preferred YouTube video ID
+    // Embed-friendly motivational videos (via youtube-nocookie.com + direct fallback link)
+    const DANGER_VIDEO_ID = 'tbnzAVRZ9Xc';     // Denzel Washington - "Fall Forward" / Dream Big
+    const BORDERLINE_VIDEO_ID = 'mgmVOuLgFB0'; // "Why Do We Fall / Rise Up"
 
-    // Portland Public Schools (Hosford) 2026-2027 Quarter End Dates & Non-School Days
+    // Official Portland Public Schools (Hosford) 2026-2027 Calendar
     const PPS_CALENDAR = {
-      q1Start: '2026-08-26',
-      q1End:   '2026-10-30',
-      q2Start: '2026-11-03',
+      q1Start: '2026-08-27',
+      q1End:   '2026-10-28',
+      q2Start: '2026-11-02',
       q2End:   '2027-01-22',
-      q3Start: '2027-01-26',
-      q3End:   '2027-04-02',
-      q4Start: '2027-04-05',
-      lastDayOfSchool: '2027-06-11', // Last day of school for Hosford 8th graders
+      q3Start: '2027-01-27',
+      q3End:   '2027-04-07',
+      q4Start: '2027-04-12',
+      lastDayOfSchool: '2027-06-08',
       holidays: [
-        '2026-09-07', // Labor Day
-        '2026-10-09', // Statewide Inservice
-        '2026-11-02', // Grading Day
-        '2026-11-11', // Veterans Day
-        '2026-11-23', '2026-11-24', '2026-11-25', '2026-11-26', '2026-11-27', // Thanksgiving Break
-        '2026-12-21', '2026-12-22', '2026-12-23', '2026-12-24', '2026-12-25', // Winter Break Wk 1
-        '2026-12-28', '2026-12-29', '2026-12-30', '2026-12-31', '2027-01-01', // Winter Break Wk 2
-        '2027-01-18', // MLK Jr. Day
-        '2027-01-25', // Semester Grading Day
-        '2027-02-15', // Presidents Day
-        '2027-03-22', '2027-03-23', '2027-03-24', '2027-03-25', '2027-03-26', // Spring Break
-        '2027-04-05', // Quarter Grading Day
-        '2027-05-31'  // Memorial Day
+        '2026-09-07',
+        '2026-10-09',
+        '2026-10-29', '2026-10-30',
+        '2026-11-11',
+        '2026-11-23', '2026-11-24', '2026-11-25', '2026-11-26', '2026-11-27',
+        '2026-12-21', '2026-12-22', '2026-12-23', '2026-12-24', '2026-12-25',
+        '2026-12-28', '2026-12-29', '2026-12-30', '2026-12-31', '2027-01-01',
+        '2027-01-18',
+        '2027-01-25', '2027-01-26',
+        '2027-02-15',
+        '2027-03-22', '2027-03-23', '2027-03-24', '2027-03-25', '2027-03-26',
+        '2027-04-08', '2027-04-09',
+        '2027-05-31'
       ]
     };
 
@@ -393,13 +386,25 @@
     // =========================================================================
     // 2. LIVE PPS SCHOOL-DAY COUNTDOWN ENGINE
     // =========================================================================
+    function parseLocalDate(yyyyMmDd) {
+      const parts = yyyyMmDd.split('-').map(Number);
+      return new Date(parts[0], parts[1] - 1, parts[2]);
+    }
+
+    function toLocalIso(dateObj) {
+      const y = dateObj.getFullYear();
+      const m = String(dateObj.getMonth() + 1).padStart(2, '0');
+      const d = String(dateObj.getDate()).padStart(2, '0');
+      return y + '-' + m + '-' + d;
+    }
+
     function countSchoolDaysBetween(startDate, endDate, holidaySet) {
       let count = 0;
       const cur = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
       const end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
       while (cur <= end) {
         const day = cur.getDay();
-        const iso = cur.toISOString().split('T')[0];
+        const iso = toLocalIso(cur);
         if (day !== 0 && day !== 6 && !holidaySet.has(iso)) {
           count++;
         }
@@ -420,14 +425,14 @@
       });
 
       const quarters = [
-        { el: 'q1Days', start: new Date(PPS_CALENDAR.q1Start + 'T00:00:00'), end: new Date(PPS_CALENDAR.q1End + 'T00:00:00') },
-        { el: 'q2Days', start: new Date(PPS_CALENDAR.q2Start + 'T00:00:00'), end: new Date(PPS_CALENDAR.q2End + 'T00:00:00') },
-        { el: 'q3Days', start: new Date(PPS_CALENDAR.q3Start + 'T00:00:00'), end: new Date(PPS_CALENDAR.q3End + 'T00:00:00') },
-        { el: 'q4Days', start: new Date(PPS_CALENDAR.q4Start + 'T00:00:00'), end: new Date(PPS_CALENDAR.lastDayOfSchool + 'T00:00:00') }
+        { el: 'q1Days', start: parseLocalDate(PPS_CALENDAR.q1Start), end: parseLocalDate(PPS_CALENDAR.q1End) },
+        { el: 'q2Days', start: parseLocalDate(PPS_CALENDAR.q2Start), end: parseLocalDate(PPS_CALENDAR.q2End) },
+        { el: 'q3Days', start: parseLocalDate(PPS_CALENDAR.q3Start), end: parseLocalDate(PPS_CALENDAR.q3End) },
+        { el: 'q4Days', start: parseLocalDate(PPS_CALENDAR.q4Start), end: parseLocalDate(PPS_CALENDAR.lastDayOfSchool) }
       ];
 
       let total = 0;
-      quarters.forEach(q => {
+      quarters.forEach(function(q) {
         if (today > q.end) {
           document.getElementById(q.el).textContent = '0';
         } else {
@@ -445,34 +450,33 @@
     // =========================================================================
     // 3. APP STATE & CHECKLIST BUILDER
     // =========================================================================
-    let state = {
+    const state = {
       checkedIds: new Set(),
       selectedPathway: null
     };
 
     function buildChecklist() {
       const container = document.getElementById('checklistContainer');
-      HABIT_CATEGORIES.forEach(cat => {
+      HABIT_CATEGORIES.forEach(function(cat) {
         const block = document.createElement('div');
         block.className = 'space-y-2.5';
-        block.innerHTML = `<h3 class="text-xs font-extrabold uppercase tracking-wider text-[#7cc9e8]">${cat.category}</h3>`;
+        block.innerHTML = '<h3 class="text-xs font-extrabold uppercase tracking-wider text-[#7cc9e8]">' + cat.category + '</h3>';
 
         const grid = document.createElement('div');
         grid.className = 'grid grid-cols-1 gap-2.5';
 
-        cat.items.forEach(item => {
+        cat.items.forEach(function(item) {
           const btn = document.createElement('button');
           btn.type = 'button';
-          btn.id = `habit-btn-${item.id}`;
+          btn.id = 'habit-btn-' + item.id;
           btn.className = 'w-full text-left p-3.5 rounded-xl border border-[#1f7a99]/50 bg-[#061a22] hover:border-[#7cc9e8] transition flex items-start gap-3.5';
-          btn.innerHTML = `
-            <div class="habit-box mt-0.5 w-6 h-6 rounded-lg border-2 border-slate-500 flex items-center justify-center shrink-0 font-bold text-sm text-transparent transition">✓</div>
-            <div>
-              <div class="font-bold text-white text-sm">${item.label}</div>
-              <div class="text-xs text-slate-300 mt-0.5">${item.desc}</div>
-            </div>
-          `;
-          btn.onclick = () => toggleHabit(item.id);
+          btn.innerHTML =
+            '<div class="habit-box mt-0.5 w-6 h-6 rounded-lg border-2 border-slate-500 flex items-center justify-center shrink-0 font-bold text-sm text-transparent transition">✓</div>' +
+            '<div>' +
+              '<div class="font-bold text-white text-sm">' + item.label + '</div>' +
+              '<div class="text-xs text-slate-300 mt-0.5">' + item.desc + '</div>' +
+            '</div>';
+          btn.onclick = function() { toggleHabit(item.id); };
           grid.appendChild(btn);
         });
 
@@ -482,7 +486,7 @@
     }
 
     function toggleHabit(id) {
-      const btn = document.getElementById(`habit-btn-${id}`);
+      const btn = document.getElementById('habit-btn-' + id);
       const box = btn.querySelector('.habit-box');
       if (state.checkedIds.has(id)) {
         state.checkedIds.delete(id);
@@ -493,16 +497,15 @@
         btn.className = 'w-full text-left p-3.5 rounded-xl border-2 border-[#7cc9e8] bg-[#1f7a99]/25 transition flex items-start gap-3.5 shadow';
         box.className = 'habit-box mt-0.5 w-6 h-6 rounded-lg border-2 border-[#7cc9e8] bg-[#7cc9e8] flex items-center justify-center shrink-0 font-black text-sm text-[#061a22] transition';
       }
-      document.getElementById('habitScoreBadge').textContent = `${state.checkedIds.size} / 9`;
+      document.getElementById('habitScoreBadge').textContent = state.checkedIds.size + ' / 9';
     }
 
     // =========================================================================
-    // 4. PATHWAY SELECTION + NON-OPPORTUNITY INTERVENTION VIDEOS/REMINDERS
+    // 4. PATHWAY SELECTION + MOTIVATION VIDEOS (DANGER ZONE & BORDERLINE)
     // =========================================================================
     function selectPathway(key) {
       state.selectedPathway = key;
 
-      // Reset card borders
       document.getElementById('path-danger').className = 'text-left p-5 rounded-2xl border-2 border-rose-500/40 bg-[#061a22] hover:border-rose-500 transition flex flex-col justify-between space-y-4';
       document.getElementById('path-borderline').className = 'text-left p-5 rounded-2xl border-2 border-amber-500/40 bg-[#061a22] hover:border-amber-400 transition flex flex-col justify-between space-y-4';
       document.getElementById('path-opportunity').className = 'text-left p-5 rounded-2xl border-2 border-emerald-500/40 bg-[#061a22] hover:border-emerald-400 transition flex flex-col justify-between space-y-4';
@@ -511,6 +514,7 @@
       const reminders = document.getElementById('feedbackReminders');
       const vidWrap = document.getElementById('feedbackVideoWrapper');
       const player = document.getElementById('pathwayVideoPlayer');
+      const fallbackLink = document.getElementById('fallbackYoutubeLink');
 
       box.classList.remove('hidden');
 
@@ -520,16 +524,17 @@
         document.getElementById('feedbackIcon').textContent = '🚨';
         document.getElementById('feedbackTitle').textContent = 'Reality Check: Why You Must Reset Before 9th Grade';
         document.getElementById('feedbackBody').textContent = 'In middle school, you move on to 9th grade even if you fail classes. In high school, every single class counts for credits—there is NO automatic promotion.';
-        reminders.innerHTML = `
-          <div class="font-bold text-rose-300">3 Things That Happen Day 1 of High School:</div>
-          <ul class="list-disc pl-5 space-y-1">
-            <li><strong>Failed classes = Zero credits:</strong> You have to retake them in summer school or night school while friends move ahead.</li>
-            <li><strong>Sports & Activities Cutoff:</strong> In Portland Public Schools (OSAA rules), failing classes immediately makes you ineligible to play sports.</li>
-            <li><strong>Good news:</strong> You still have <strong>${totalSchoolDaysRemaining} school days</strong> at Hosford to practice the habits that flip this around.</li>
-          </ul>
-        `;
+        reminders.innerHTML =
+          '<div class="font-bold text-rose-300">3 Things That Happen Day 1 of High School:</div>' +
+          '<ul class="list-disc pl-5 space-y-1">' +
+            '<li><strong>Failed classes = Zero credits:</strong> You have to retake them in summer school or night school while friends move ahead.</li>' +
+            '<li><strong>Sports & Activities Cutoff:</strong> In Portland Public Schools (OSAA rules), failing classes immediately makes you ineligible to play sports.</li>' +
+            '<li><strong>Good news:</strong> You still have <strong>' + totalSchoolDaysRemaining + ' school days</strong> at Hosford to practice the habits that flip this around.</li>' +
+          '</ul>';
         vidWrap.classList.remove('hidden');
-        player.src = `https://www.youtube.com/embed/${DANGER_VIDEO_ID}?rel=0`;
+        document.getElementById('videoCaptionText').textContent = 'Danger Zone Reset Video — Watch Before Continuing:';
+        player.src = 'https://www.youtube-nocookie.com/embed/' + DANGER_VIDEO_ID + '?rel=0';
+        fallbackLink.href = 'https://www.youtube.com/watch?v=' + DANGER_VIDEO_ID;
 
       } else if (key === 'borderline') {
         document.getElementById('path-borderline').className = 'text-left p-5 rounded-2xl border-2 border-amber-400 bg-amber-950/30 shadow-xl transition flex flex-col justify-between space-y-4';
@@ -537,16 +542,17 @@
         document.getElementById('feedbackIcon').textContent = '⚡';
         document.getElementById('feedbackTitle').textContent = 'Warning: "Just Getting By" Shrinks Your Options';
         document.getElementById('feedbackBody').textContent = 'Coasting with Cs in 8th grade usually turns into Ds and Fs when 9th-grade workload jumps. You have way more potential than a borderline transcript.';
-        reminders.innerHTML = `
-          <div class="font-bold text-amber-300">What Moving from Borderline → Opportunity Unlocks:</div>
-          <ul class="list-disc pl-5 space-y-1">
-            <li><strong>Zero Stress Eligibility:</strong> Never worrying whether one bad quiz knocks you off a team or club.</li>
-            <li><strong>Real Money & Doors Open:</strong> As and Bs unlock Oregon Promise, college merit scholarships, and competitive trade/tech programs.</li>
-            <li><strong>Small Shift Today:</strong> Turning in missing work and putting your phone away during class is often all it takes to jump a full letter grade.</li>
-          </ul>
-        `;
+        reminders.innerHTML =
+          '<div class="font-bold text-amber-300">What Moving from Borderline → Opportunity Unlocks:</div>' +
+          '<ul class="list-disc pl-5 space-y-1">' +
+            '<li><strong>Zero Stress Eligibility:</strong> Never worrying whether one bad quiz knocks you off a team or club.</li>' +
+            '<li><strong>Real Money & Doors Open:</strong> As and Bs unlock Oregon Promise, college merit scholarships, and competitive trade/tech programs.</li>' +
+            '<li><strong>Small Shift Today:</strong> Turning in missing work and putting your phone away during class is often all it takes to jump a full letter grade.</li>' +
+          '</ul>';
         vidWrap.classList.remove('hidden');
-        player.src = `https://www.youtube.com/embed/${BORDERLINE_VIDEO_ID}?rel=0`;
+        document.getElementById('videoCaptionText').textContent = 'Borderline Reset Video — Watch Before Continuing:';
+        player.src = 'https://www.youtube-nocookie.com/embed/' + BORDERLINE_VIDEO_ID + '?rel=0';
+        fallbackLink.href = 'https://www.youtube.com/watch?v=' + BORDERLINE_VIDEO_ID;
 
       } else {
         document.getElementById('path-opportunity').className = 'text-left p-5 rounded-2xl border-2 border-emerald-400 bg-emerald-950/30 shadow-xl transition flex flex-col justify-between space-y-4';
@@ -554,10 +560,9 @@
         document.getElementById('feedbackIcon').textContent = '🎯';
         document.getElementById('feedbackTitle').textContent = 'You Are on the Opportunity Pathway — Keep Protecting It';
         document.getElementById('feedbackBody').textContent = 'Your current habits are setting you up to walk into 9th grade confident, eligible for everything, and in control of your future.';
-        reminders.innerHTML = `
-          <div class="font-bold text-emerald-300">How to Stay Locked In Through June:</div>
-          <p>Don't let senioritis (8th-grade edition) creep in during Quarter 3 or Quarter 4. Use the planner on the next step to level up any remaining habits from your checklist.</p>
-        `;
+        reminders.innerHTML =
+          '<div class="font-bold text-emerald-300">How to Stay Locked In Through June:</div>' +
+          '<p>Do not let 8th-grade senioritis creep in during Quarter 3 or Quarter 4. Use the planner on the next step to level up any remaining habits from your checklist.</p>';
         vidWrap.classList.add('hidden');
         player.src = '';
       }
@@ -570,21 +575,21 @@
       if (num !== 2) {
         document.getElementById('pathwayVideoPlayer').src = '';
       }
-      [1, 2, 3].forEach(n => {
-        document.getElementById(`stage${n}`).classList.toggle('hidden', n !== num);
+      [1, 2, 3].forEach(function(n) {
+        document.getElementById('stage' + n).classList.toggle('hidden', n !== num);
       });
-      document.getElementById('stepIndicator').textContent = `Step ${num} of 3`;
-      document.getElementById('progressBar').style.width = `${num * 33.3}%`;
+      document.getElementById('stepIndicator').textContent = 'Step ' + num + ' of 3';
+      document.getElementById('progressBar').style.width = (num * 33.3) + '%';
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
       if (num === 3) {
-        const allItems = HABIT_CATEGORIES.flatMap(c => c.items);
-        const missing = allItems.filter(i => !state.checkedIds.has(i.id)).map(i => i.label);
+        const allItems = HABIT_CATEGORIES.flatMap(function(c) { return c.items; });
+        const missing = allItems.filter(function(i) { return !state.checkedIds.has(i.id); }).map(function(i) { return i.label; });
         const banner = document.getElementById('missingHabitsBanner');
         if (missing.length > 0) {
-          banner.innerHTML = `<strong class="text-[#7cc9e8]">Skills from Part 1 to Build in Your Quarter Plan:</strong> ${missing.join(', ')}`;
+          banner.innerHTML = '<strong class="text-[#7cc9e8]">Skills from Part 1 to Build in Your Quarter Plan:</strong> ' + missing.join(', ');
         } else {
-          banner.innerHTML = `<strong class="text-emerald-400">All 9 Habits Checked!</strong> Use the quarters below to plan how you will maintain and strengthen these habits all the way to June.`;
+          banner.innerHTML = '<strong class="text-emerald-400">All 9 Habits Checked!</strong> Use the quarters below to plan how you will maintain and strengthen these habits all the way to June.';
         }
       }
     }
@@ -592,17 +597,17 @@
     function submitStage1() {
       const name = document.getElementById('studentName').value.trim();
       const plan = document.getElementById('skillPlan').value.trim();
-      if (!name) return alert('Please enter your Name (First + Last Initial).');
-      if (!plan) return alert('Please write your brief reflection plan before moving to Part 2.');
+      if (!name) { alert('Please enter your Name.'); return; }
+      if (!plan) { alert('Please write your brief reflection plan before moving to Part 2.'); return; }
       goToStage(2);
     }
 
     function submitStage2() {
-      if (!state.selectedPathway) return alert('Tap one of the 3 High School Pathways above to continue.');
+      if (!state.selectedPathway) { alert('Tap one of the 3 High School Pathways above to continue.'); return; }
       const q1 = document.getElementById('pathwayQ1').value.trim();
       const q2 = document.getElementById('pathwayQ2').value.trim();
       const q3 = document.getElementById('pathwayQ3').value.trim();
-      if (!q1 || !q2 || !q3) return alert('Please answer all 3 Pathway Reflection questions.');
+      if (!q1 || !q2 || !q3) { alert('Please answer all 3 Pathway Reflection questions.'); return; }
       goToStage(3);
     }
 
@@ -611,15 +616,15 @@
     // =========================================================================
     async function submitAllToSheet() {
       const finalCommit = document.getElementById('finalReflection').value.trim();
-      if (!finalCommit) return alert('Please enter your commitment for tomorrow at Hosford.');
+      if (!finalCommit) { alert('Please enter your commitment for tomorrow at Hosford.'); return; }
 
       const btn = document.getElementById('finalSubmitBtn');
       btn.disabled = true;
       btn.textContent = 'Saving Your Plan...';
 
-      const allItems = HABIT_CATEGORIES.flatMap(c => c.items);
-      const checkedLabels = allItems.filter(i => state.checkedIds.has(i.id)).map(i => i.label).join(', ') || 'None yet';
-      const missingLabels = allItems.filter(i => !state.checkedIds.has(i.id)).map(i => i.label).join(', ') || 'None';
+      const allItems = HABIT_CATEGORIES.flatMap(function(c) { return c.items; });
+      const checkedLabels = allItems.filter(function(i) { return state.checkedIds.has(i.id); }).map(function(i) { return i.label; }).join(', ') || 'None yet';
+      const missingLabels = allItems.filter(function(i) { return !state.checkedIds.has(i.id); }).map(function(i) { return i.label; }).join(', ') || 'None';
 
       const pathwayNames = {
         danger: 'The Danger Zone',
@@ -627,18 +632,18 @@
         opportunity: 'The Opportunity Pathway'
       };
 
-      const q1AuditText = `Worked: ${document.getElementById('q1Worked').value.trim()} | Didn't work: ${document.getElementById('q1DidntWork').value.trim()}`;
+      const q1AuditText = 'Worked: ' + document.getElementById('q1Worked').value.trim() + ' | Did not work: ' + document.getElementById('q1DidntWork').value.trim();
       const q2ToQ4Text = [
-        `Q2: ${document.getElementById('q2Habits').value.trim()} (${document.getElementById('q2Start').value.trim()})`,
-        `Q3: ${document.getElementById('q3Habits').value.trim()} (${document.getElementById('q3Start').value.trim()})`,
-        `Q4: ${document.getElementById('q4Habits').value.trim()} (${document.getElementById('q4Start').value.trim()})`
+        'Q2: ' + document.getElementById('q2Habits').value.trim() + ' (' + document.getElementById('q2Start').value.trim() + ')',
+        'Q3: ' + document.getElementById('q3Habits').value.trim() + ' (' + document.getElementById('q3Start').value.trim() + ')',
+        'Q4: ' + document.getElementById('q4Habits').value.trim() + ' (' + document.getElementById('q4Start').value.trim() + ')'
       ].join(' || ');
 
       const payload = {
-        period: document.getElementById('periodSelect').value,
+        period: '8th Grade Team',
         studentName: document.getElementById('studentName').value.trim(),
         daysLeft: totalSchoolDaysRemaining,
-        habitScore: `${state.checkedIds.size}/9`,
+        habitScore: state.checkedIds.size + '/9',
         checkedHabits: checkedLabels,
         missingHabits: missingLabels,
         skillPlan: document.getElementById('skillPlan').value.trim(),
@@ -662,16 +667,15 @@
         console.error('Submission error:', err);
       }
 
-      // Show Completion Screen
       document.getElementById('stage3').classList.add('hidden');
       document.getElementById('stageDone').classList.remove('hidden');
       document.getElementById('stepIndicator').textContent = 'Complete ✓';
       document.getElementById('progressBar').style.width = '100%';
 
       document.getElementById('summaryMessage').textContent =
-        `You have ${totalSchoolDaysRemaining} school days left at Hosford to lock in your habits and own your 9th-grade launch.`;
-      document.getElementById('sumDays').textContent = `${totalSchoolDaysRemaining} school days`;
-      document.getElementById('sumHabits').textContent = `${state.checkedIds.size} / 9 habits checked`;
+        'You have ' + totalSchoolDaysRemaining + ' school days left at Hosford to lock in your habits and own your 9th-grade launch.';
+      document.getElementById('sumDays').textContent = totalSchoolDaysRemaining + ' school days';
+      document.getElementById('sumHabits').textContent = state.checkedIds.size + ' / 9 habits checked';
       document.getElementById('sumPathway').textContent = pathwayNames[state.selectedPathway];
       document.getElementById('sumCommit').textContent = finalCommit;
     }
